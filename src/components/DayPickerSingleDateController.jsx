@@ -287,7 +287,7 @@ export default class DayPickerSingleDateController extends React.PureComponent {
         }
 
         const didDateChange = date !== prevDate;
-        const didDatesChange = !_.isEqual(dates, prevDates);
+        const didDatesChange = dates !== prevDates;
         const didFocusChange = focused !== prevFocused;
 
         let modifiers = {};
