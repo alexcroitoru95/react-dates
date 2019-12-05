@@ -291,7 +291,7 @@ export default class DayPickerSingleDateController extends React.PureComponent {
         const didFocusChange = focused !== prevFocused;
 
         let modifiers = {};
-        let newDates = [];
+        // let newDates = [];
 
         if (didDateChange) {
             modifiers = this.deleteModifier(modifiers, prevDate, 'selected');
@@ -299,25 +299,25 @@ export default class DayPickerSingleDateController extends React.PureComponent {
         }
 
         if (didDatesChange) {
-            console.log('dates Changed');
+            const newDate = moment('2019-09-12', 'YYYY-MM-DD');
+            this.addModifier(modifiers, newDate, 'selected');
 
-            dates.map(newDate => {
-                prevDates.map(prevDate => {
-                    if (
-                        moment(newDate).format(MOMENT_FORMAT) !==
-                        moment(prevDate).format(MOMENT_FORMAT)
-                    ) {
-                        newDates.push(newDate);
-                    }
-                });
-            });
+            // dates.map(newDate => {
+            //     prevDates.map(prevDate => {
+            //         if (
+            //             moment(newDate).format(MOMENT_FORMAT) !==
+            //             moment(prevDate).format(MOMENT_FORMAT)
+            //         ) {
+            //             newDates.push(newDate);
+            //         }
+            //     });
+            // });
 
-            if (newDates.length > 0) {
-                console.log(newDates, 'newDates');
-                newDates.map(item => {
-                    modifiers = this.addModifier(modifiers, item, 'selected');
-                });
-            }
+            // if (newDates.length > 0) {
+            //     newDates.map(item => {
+            //         modifiers = this.addModifier(modifiers, item, 'selected');
+            //     });
+            // }
         }
 
         if (didFocusChange || recomputePropModifiers) {
